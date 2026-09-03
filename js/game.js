@@ -179,8 +179,9 @@ window.Game = (function (Sprites, CONTENT) {
 
     // Misma pareja de pingüinos azul/rosado de la escena de bienvenida
     // (excepción intencional a blanco/negro, ver sprites.js).
-    Sprites.renderPenguins(document.getElementById("art-birds-pair-final"), 7);
-    Sprites.renderCats(document.getElementById("art-cats-pair-final"), 6);
+    const isMobile = window.matchMedia("(max-width: 480px)").matches;
+    Sprites.renderPenguins(document.getElementById("art-birds-pair-final"), isMobile ? 4 : 7);
+    Sprites.renderCats(document.getElementById("art-cats-pair-final"), isMobile ? 4 : 6);
 
     spawnConfetti();
   }

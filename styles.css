@@ -694,8 +694,15 @@ button {
     padding: 12px 14px;
   }
   .flower-picker {
-    gap: 12px;
+    gap: 8px;
     min-height: 170px;
+    flex-wrap: wrap;
+  }
+  .couple-row {
+    gap: 6px;
+  }
+  .hug-row {
+    gap: 8px;
   }
   .hint-card {
     top: -14px;
