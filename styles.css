@@ -1,0 +1,717 @@
+/* =========================================================================
+   styles.css
+   -------------------------------------------------------------------------
+   Estética general: pixel art kawaii, paleta romántica cálida (rosas,
+   coral/vino, crema, negro suave, dorado). Tipografía pixel para títulos
+   y una fuente redondeada legible para los párrafos largos.
+   ========================================================================= */
+
+:root {
+  --bg-cream: #fbeee3;
+  --bg-cream-2: #f7e2d4;
+  --pink-blush: #f6a8c4;
+  --pink-soft: #f7c6dc;
+  --coral: #e8607a;
+  --wine: #b23a52;
+  --gold: #e6c35c;
+  --gold-dark: #c79f3a;
+  --ink: #3b2b2f;
+  --ink-soft: #5a4650;
+  --cream-panel: #fffaf3;
+  --shadow-hard: #d68fa8;
+
+  --font-pixel: "Press Start 2P", monospace;
+  --font-body: "Quicksand", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: linear-gradient(160deg, var(--bg-cream) 0%, var(--bg-cream-2) 100%);
+  overflow-x: hidden;
+  position: relative;
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* -------------------------------------------------------------------
+   Fondo de corazones flotantes (compartido)
+   ------------------------------------------------------------------- */
+#floating-hearts-bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -40px;
+  animation-name: floatUp;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-55vh) translateX(18px) rotate(8deg);
+  }
+  100% {
+    transform: translateY(-115vh) translateX(-12px) rotate(-6deg);
+  }
+}
+
+/* -------------------------------------------------------------------
+   Marco "consola retro" (CRT frame) reutilizable
+   ------------------------------------------------------------------- */
+.crt-frame {
+  position: relative;
+  z-index: 1;
+  background: var(--cream-panel);
+  border: 4px solid var(--ink);
+  border-radius: 14px;
+  box-shadow:
+    0 0 0 4px var(--pink-soft),
+    6px 6px 0 var(--shadow-hard);
+}
+
+.crt-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 10px;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(59, 43, 47, 0.035) 0px,
+    rgba(59, 43, 47, 0.035) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+}
+
+/* -------------------------------------------------------------------
+   Login
+   ------------------------------------------------------------------- */
+.login-screen {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  transition: opacity 0.5s ease;
+}
+
+.login-screen[hidden] {
+  display: none;
+}
+
+.login-card {
+  width: min(360px, 100%);
+  padding: 32px 24px 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.lock-sprite {
+  margin: 0 auto 6px;
+}
+
+.login-stack {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hint-card {
+  position: absolute;
+  z-index: 0;
+  top: -45px;
+  right: -45px;
+  width: 132px;
+  padding: 16px 12px;
+  background: var(--coral);
+  border: 4px solid var(--ink);
+  border-radius: 8px;
+  box-shadow: 4px 4px 0 var(--wine);
+  text-align: center;
+  cursor: pointer;
+  transform: rotate(9deg) translate(14px, -8px) scale(0.85);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+.hint-card.hint-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: rotate(9deg) translate(0, 0) scale(1);
+}
+
+.hint-card.hint-open {
+  z-index: 2;
+  transform: rotate(0deg) translate(-6px, -26px) scale(1.05);
+}
+
+.hint-card-label,
+.hint-card-text {
+  color: #fffaf3;
+}
+
+.hint-card-label {
+  font-family: var(--font-pixel);
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
+.hint-card-text {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  display: block;
+  overflow-wrap: break-word;
+}
+
+.pixel-title {
+  font-family: var(--font-pixel);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink);
+  text-shadow: 2px 2px 0 var(--pink-soft);
+}
+
+.soft-text {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  max-width: 46ch;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.password-input {
+  font-family: var(--font-pixel);
+  font-size: 0.85rem;
+  padding: 14px 12px;
+  border: 3px solid var(--ink);
+  border-radius: 8px;
+  background: #fffdf9;
+  color: var(--ink);
+  text-align: center;
+  letter-spacing: 4px;
+  outline: none;
+}
+
+.password-input:focus {
+  border-color: var(--coral);
+}
+
+.login-error {
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--wine);
+  min-height: 1.2em;
+}
+
+/* Shake pixelado al fallar la contraseña */
+.shake {
+  animation: pixelShake 0.42s steps(2, end);
+}
+
+@keyframes pixelShake {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-8px);
+  }
+  40% {
+    transform: translateX(8px);
+  }
+  60% {
+    transform: translateX(-6px);
+  }
+  80% {
+    transform: translateX(6px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Transición de salida tipo scanline al acertar */
+.scanline-wipe {
+  animation: scanlineWipe 0.55s ease-in forwards;
+}
+
+@keyframes scanlineWipe {
+  0% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  60% {
+    opacity: 0.5;
+    filter: brightness(1.6) contrast(1.3);
+  }
+  100% {
+    opacity: 0;
+    filter: brightness(2);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* -------------------------------------------------------------------
+   App / escenas
+   ------------------------------------------------------------------- */
+#app {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+#app[hidden] {
+  display: none;
+}
+
+.scenes-frame {
+  width: min(520px, 100%);
+  min-height: 460px;
+  padding: 28px 22px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.scene[hidden] {
+  display: none;
+}
+
+.scene-title {
+  margin-top: 4px;
+}
+
+.scene-text {
+  margin: 0;
+}
+
+.scene-enter {
+  animation: sceneEnter 0.42s ease-out;
+}
+
+.scene-exit {
+  animation: sceneExit 0.36s ease-in forwards;
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 28px 22px;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes sceneEnter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sceneExit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+}
+
+/* Sprites: contenedores base */
+.sprite-box {
+  image-rendering: pixelated;
+}
+
+.heart-above {
+  margin-bottom: -6px;
+  animation: gentleBob 2.4s ease-in-out infinite;
+}
+
+.heart-between {
+  align-self: center;
+  animation: gentleBob 2.4s ease-in-out infinite;
+}
+
+@keyframes gentleBob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.birds-row,
+.cats-row,
+.couple-row,
+.hug-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.branch-sprite {
+  margin-top: -18px;
+}
+
+.flower-picker {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 20px;
+  min-height: 200px;
+  width: 100%;
+  margin: 0 auto;
+}
+.flower-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 6px;
+  border-radius: 10px;
+  cursor: pointer;
+  --tilt: 0deg;
+  --shift: 0px;
+  --scale: 1;
+}
+.flower-option:first-child {
+  --tilt: -6deg;
+}
+.flower-option:last-child {
+  --tilt: 6deg;
+}
+.flower-option[data-flower="rose"] {
+  --shift: 6px;
+  --scale: 0.95;
+}
+.flower-option[data-flower="pink"] {
+  --shift: 6px;
+}
+.flower-label {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  transition: color 0.18s ease;
+}
+.flower-option.flower-selected .flower-label {
+  color: var(--wine);
+}
+.flower-option .sprite-box {
+  transform: translateX(var(--shift)) rotate(var(--tilt)) scale(var(--scale));
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+.flower-option:hover .sprite-box,
+.flower-option:focus-visible .sprite-box {
+  transform: translateX(var(--shift)) rotate(var(--tilt)) scale(var(--scale)) translateY(-8px) scale(1.1);
+  filter: drop-shadow(3px 3px 0 var(--shadow-hard));
+}
+.flower-option.flower-selected .sprite-box {
+  transform: translateX(var(--shift)) rotate(var(--tilt)) scale(var(--scale)) translateY(-8px) scale(1.12);
+  filter: drop-shadow(3px 3px 0 var(--coral));
+}
+.flower-option:focus-visible {
+  outline: 3px dashed var(--coral);
+  outline-offset: 4px;
+}
+
+/* -------------------------------------------------------------------
+   Botones pixel art
+   ------------------------------------------------------------------- */
+.pixel-btn {
+  font-family: var(--font-pixel);
+  font-size: 0.8rem;
+  padding: 14px 18px;
+  border: 3px solid var(--ink);
+  border-radius: 6px;
+  background: var(--pink-soft);
+  color: var(--ink);
+  box-shadow: 4px 4px 0 var(--shadow-hard);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.pixel-btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--shadow-hard);
+}
+
+.pixel-btn-primary {
+  background: var(--coral);
+  color: #fffaf3;
+  box-shadow: 4px 4px 0 var(--wine);
+}
+
+.pixel-btn-primary:active {
+  box-shadow: 1px 1px 0 var(--wine);
+}
+
+.next-btn {
+  margin-top: 6px;
+}
+
+/* -------------------------------------------------------------------
+   Minijuego "¿Quieres ser mi novia?"
+   ------------------------------------------------------------------- */
+.game-title {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.game-area {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  min-height: 300px;
+}
+
+.yes-btn {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 0.25s ease;
+  z-index: 2;
+}
+
+.no-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: left 0.16s ease-out, top 0.16s ease-out;
+  z-index: 2;
+  background: var(--bg-cream-2);
+}
+
+.no-btn-pop {
+  animation: noPop 0.25s ease-out;
+}
+
+@keyframes noPop {
+  0% {
+    transform: scale(0.85);
+  }
+  60% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.escape-message {
+  position: absolute;
+  max-width: 150px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--wine);
+  background: rgba(255, 250, 243, 0.9);
+  border: 2px dashed var(--pink-blush);
+  border-radius: 8px;
+  padding: 6px 8px;
+  pointer-events: none;
+  animation: fadeIn 0.25s ease-out;
+  transition: opacity 0.7s ease;
+  z-index: 1;
+}
+
+.escape-message-fade {
+  opacity: 0;
+}
+
+/* -------------------------------------------------------------------
+   Celebración final
+   ------------------------------------------------------------------- */
+.celebration-scene {
+  position: relative;
+  overflow: hidden;
+  min-height: 380px;
+  justify-content: center;
+}
+
+.celebration-title {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  z-index: 2;
+}
+
+.celebration-scene .soft-text {
+  z-index: 2;
+}
+
+.hug-row {
+  z-index: 2;
+}
+
+.confetti-root {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -20px;
+  width: 8px;
+  height: 8px;
+  border-radius: 1px;
+  animation-name: confettiFall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.confetti-heart {
+  width: auto;
+  height: auto;
+  background: none !important;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-20px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(420px) rotate(180deg);
+    opacity: 0.15;
+  }
+}
+
+/* -------------------------------------------------------------------
+   Responsive
+   ------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .pixel-title {
+    font-size: 0.8rem;
+  }
+  .soft-text {
+    font-size: 0.95rem;
+  }
+  .scenes-frame {
+    padding: 22px 14px;
+    min-height: 420px;
+  }
+  .scene-exit {
+    padding: 22px 14px;
+  }
+  .game-area {
+    height: 260px;
+    min-height: 260px;
+  }
+  .pixel-btn {
+    font-size: 0.7rem;
+    padding: 12px 14px;
+  }
+  .flower-picker {
+    gap: 12px;
+    min-height: 170px;
+  }
+  .hint-card {
+    top: -14px;
+    right: -18px;
+    width: 110px;
+    padding: 12px 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-heart,
+  .confetti-piece,
+  .heart-above,
+  .heart-between,
+  .scanline-wipe,
+  .shake {
+    animation: none !important;
+  }
+}

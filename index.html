@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Un regalito para ti 💗</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quicksand:wght@500;600;700&display=swap"
+  rel="stylesheet"
+/>
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Fondo de corazones flotantes, compartido por login y app -->
+  <div id="floating-hearts-bg" aria-hidden="true"></div>
+
+  <!-- ===================== PANTALLA DE LOGIN ===================== -->
+  <section id="login-screen" class="login-screen">
+    <div class="login-stack">
+
+      <button id="hint-card" class="crt-frame hint-card hidden" type="button">
+        <span id="hint-card-label" class="hint-card-label"></span>
+        <span id="hint-card-text" class="hint-card-text hidden"></span>
+      </button>
+
+      <div class="crt-frame login-card">
+        <div id="lock-sprite" class="sprite-box lock-sprite" aria-hidden="true"></div>
+        <h1 id="login-title" class="pixel-title"></h1>
+        <p id="login-subtitle" class="soft-text"></p>
+
+        <form id="login-form" class="login-form" autocomplete="off">
+          <input
+            id="password-input"
+            type="password"
+            class="password-input"
+            inputmode="numeric"
+            autocomplete="off"
+          />
+          <button id="login-button" type="submit" class="pixel-btn pixel-btn-primary"></button>
+        </form>
+
+        <p id="login-error" class="login-error hidden"></p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== APP (escenas) ===================== -->
+  <main id="app" hidden>
+    <div class="crt-frame scenes-frame">
+
+      <!-- Escena 1: bienvenida (pajaritos) -->
+      <section id="scene-welcome" class="scene" hidden>
+        <div id="art-heart-welcome" class="sprite-box heart-above" aria-hidden="true"></div>
+        <div class="birds-row">
+          <div id="art-birds-pair" class="sprite-box" aria-hidden="true"></div>
+        </div>
+        <div id="art-branch" class="sprite-box branch-sprite" aria-hidden="true"></div>
+        <h2 class="scene-title pixel-title"></h2>
+        <p class="scene-text soft-text"></p>
+        <button class="pixel-btn next-btn"></button>
+      </section>
+
+      <!-- Escena 2: gatitos -->
+      <section id="scene-cats" class="scene" hidden>
+        <div id="art-heart-cats" class="sprite-box heart-above" aria-hidden="true"></div>
+        <div class="cats-row">
+          <div id="art-cats-pair" class="sprite-box" aria-hidden="true"></div>
+        </div>
+        <h2 class="scene-title pixel-title"></h2>
+        <p class="scene-text soft-text"></p>
+        <button class="pixel-btn next-btn"></button>
+      </section>
+
+      <!-- Escena 3: elige tu favorita -->
+      <section id="scene-lilies" class="scene" hidden>
+        <div class="flower-picker">
+          <button type="button" class="flower-option" data-flower="tulip">
+            <div id="art-flower-1" class="sprite-box" aria-hidden="true"></div>
+            <span class="flower-label">Tulipanes</span>
+          </button>
+          <button type="button" class="flower-option" data-flower="rose">
+            <div id="art-flower-2" class="sprite-box" aria-hidden="true"></div>
+            <span class="flower-label">Rosas</span>
+          </button>
+          <button type="button" class="flower-option" data-flower="pink">
+            <div id="art-flower-3" class="sprite-box" aria-hidden="true"></div>
+            <span class="flower-label">Lirios</span>
+          </button>
+        </div>
+        <h2 class="scene-title pixel-title"></h2>
+        <p class="scene-text soft-text"></p>
+        <button class="pixel-btn next-btn hidden"></button>
+      </section>
+
+      <!-- Escena 4: pareja (retratos en pixel art) -->
+      <section id="scene-couple" class="scene" hidden>
+        <div class="couple-row">
+          <div id="art-portrait-el" class="sprite-box" aria-hidden="true"></div>
+          <div id="art-heart-couple" class="sprite-box heart-between" aria-hidden="true"></div>
+          <div id="art-portrait-ella" class="sprite-box" aria-hidden="true"></div>
+        </div>
+        <h2 class="scene-title pixel-title"></h2>
+        <p class="scene-text soft-text"></p>
+        <button class="pixel-btn next-btn"></button>
+      </section>
+
+      <!-- Escena 5: minijuego -->
+      <section id="scene-game" class="scene" hidden>
+        <h2 id="game-title" class="pixel-title game-title"></h2>
+        <div id="game-area" class="game-area">
+          <button id="yes-btn" class="pixel-btn pixel-btn-primary yes-btn"></button>
+          <button id="no-btn" class="pixel-btn no-btn"></button>
+        </div>
+      </section>
+
+      <!-- Escena 6: celebración final -->
+      <section id="scene-celebration" class="scene celebration-scene" hidden>
+        <div id="confetti-root" class="confetti-root" aria-hidden="true"></div>
+        <h2 id="celebration-title" class="pixel-title celebration-title"></h2>
+        <p id="celebration-subtitle" class="soft-text"></p>
+        <div class="hug-row">
+          <div id="art-birds-pair-final" class="sprite-box" aria-hidden="true"></div>
+          <div id="art-cats-pair-final" class="sprite-box" aria-hidden="true"></div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="js/content.js"></script>
+  <script src="js/pixelart.js"></script>
+  <script src="js/sprites.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/scenes.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
