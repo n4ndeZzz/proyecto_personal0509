@@ -51,7 +51,7 @@ window.Scenes = (function (Sprites, CONTENT, Game) {
     // completo, los dos retratos + el corazón del medio suman casi
     // 400px de ancho y no entran uno al lado del otro en la mayoría de
     // los celulares (el segundo retrato termina saltando a otra fila).
-    const portraitPx = isMobile ? 1.3 : 2;
+    const portraitPx = isMobile ? 1 : 2;
     Sprites.renderPortrait(document.getElementById("art-portrait-el"), "el", portraitPx);
     Sprites.renderPortrait(document.getElementById("art-portrait-ella"), "ella", portraitPx);
     Sprites.renderHeart(document.getElementById("art-heart-couple"), isMobile ? 5 : 7, "#e8607a");
