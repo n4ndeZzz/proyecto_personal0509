@@ -33,7 +33,7 @@ Pero antes de que leas algo que escribí para ti con una pregunta muy importante
       title: "Atrasé un poquito los planes",
       text: `Se supone que el plan de hoy debería de ser disfrutar un ratico del hotel y luego ir a conocer bien el pueblo para comer yyyyyyyy quedamos en tomar una cantidad considerable de polas en un lugar así bien pueblerino.
 
-Pero planeé algo, para ver qué es, escríbeme cuando termines de leer esta parte y voy a mandar mi ubicación para que vayas. No vayas a pasar a la siguiente tarjetica todavía, cuando llegues sigues esta dinámica.`,
+Pero planeé algo, para ver qué es, escríbeme cuando termines de leer esta parte y te voy a mandar mi ubicación para que vayas. No vayas a pasar a la siguiente tarjetica todavía, cuando llegues seguimos con esta dinámica.`,
       nextLabel: "Siguiente →",
     },
     {
