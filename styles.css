@@ -360,6 +360,7 @@ button {
 
 .scene-text {
   margin: 0;
+  white-space: pre-line;
 }
 
 .scene-enter {
