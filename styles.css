@@ -708,7 +708,7 @@ button {
   .hint-card {
     top: auto;
     right: auto;
-    bottom: -30px;
+    bottom: -54px;
     left: 50%;
     width: 190px;
     padding: 10px 12px;
@@ -719,7 +719,7 @@ button {
     transform: translate(-50%, 0) scale(1);
   }
   .hint-card.hint-open {
-    transform: translate(-50%, -10px) scale(1.05);
+    transform: translate(-50%, 0) scale(1.05);
   }
 }
 
