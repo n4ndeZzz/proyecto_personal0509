@@ -706,10 +706,20 @@ button {
     gap: 8px;
   }
   .hint-card {
-    top: -14px;
-    right: -18px;
-    width: 110px;
-    padding: 12px 10px;
+    top: auto;
+    right: auto;
+    bottom: -30px;
+    left: 50%;
+    width: 190px;
+    padding: 10px 12px;
+    text-align: center;
+    transform: translate(-50%, 10px) scale(0.85);
+  }
+  .hint-card.hint-visible {
+    transform: translate(-50%, 0) scale(1);
+  }
+  .hint-card.hint-open {
+    transform: translate(-50%, -10px) scale(1.05);
   }
 }
 
