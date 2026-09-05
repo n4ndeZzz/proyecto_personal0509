@@ -706,10 +706,11 @@ button {
     gap: 8px;
   }
   .hint-card {
-    top: auto;
+    top: 100%;
     right: auto;
-    bottom: -54px;
+    bottom: auto;
     left: 50%;
+    margin-top: -10px;
     width: 190px;
     padding: 10px 12px;
     text-align: center;
