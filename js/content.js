@@ -23,7 +23,7 @@ window.CONTENT = {
     {
       id: "welcome",
       title: "Si pusiste bien la contraseña significa que para ti hoy es una fecha especial también",
-      text: `La verdad llevo varios días emocionado diseñando estoy aquí escribiendo esta carta lo que más se me pasa por la mente es lo mucho que quiero que la leas y que estemos pasando el momento que tengo en mente.
+      text: `La verdad llevo varios días emocionado diseñando esto y aquí escribiendo esta carta lo que más se me pasa por la mente es lo mucho que quiero que la leas y que estemos pasando el momento que tengo en mente.
 
 Pero antes de que leas algo que escribí para ti con una pregunta muy importante`,
       nextLabel: "Siguiente →",
